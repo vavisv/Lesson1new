@@ -46,8 +46,6 @@ namespace LessonProject.Model
             {
                 yield return new ValidationResult("Пароли не совпадают", new string[] { "ConfirmPassword" });
             }
-
-            //check git options
         }
 
     }
