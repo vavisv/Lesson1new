@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Web;
 using System.Web.Mvc;
+using LessonProject.Mappers;
 using LessonProject.Model;
 using LessonProject.Models;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
@@ -60,6 +61,7 @@ namespace LessonProject.App_Start
             // kernel.Bind<IWeapon>().To<Bazuka>();
             kernel.Bind<LessonProjectDbDataContext>().ToMethod(c => new LessonProjectDbDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString));
             kernel.Bind<IRepository>().To<SqlRepository>().InRequestScope();
+            kernel.Bind<IMapper>().To<CommonMapper>().InSingletonScope();
         }
     }
 }
