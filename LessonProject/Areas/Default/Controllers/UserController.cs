@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using LessonProject.Controllers;
 using LessonProject.Model;
+using LessonProject.Models.ViewModels;
 
 namespace LessonProject.Areas.Default.Controllers
 {
@@ -44,6 +45,14 @@ namespace LessonProject.Areas.Default.Controllers
             {
                 ModelState.AddModelError("Email", "Пользователь с таким email уже зарегистрирован");
             }
+
+            if (ModelState.IsValid)
+            {
+                var user = (User)ModelMapper.Map(userView, typeof(UserView), typeof(User));
+
+                //TODO: save
+            }
+
 
             return View(user);
         }

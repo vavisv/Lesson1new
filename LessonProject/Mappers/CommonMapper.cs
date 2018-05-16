@@ -12,8 +12,21 @@ namespace LessonProject.Mappers
     {
         static CommonMapper()
         {
-            Mapper.CreateMap<User, UserView>();
-            Mapper.CreateMap<UserView, User>();
+
+            //var config = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.CreateMap<User, UserView>();
+            //    cfg.CreateMap<UserView, User>();
+            //});
+
+            //Mapper.CreateMap<User, UserView>();
+            //Mapper.CreateMap<UserView, User>();
+
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<User, UserView>();
+                cfg.CreateMap<UserView, User>();
+            });
         }
 
         public object Map(object source, Type sourceType, Type destinationType)
